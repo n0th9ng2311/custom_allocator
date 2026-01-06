@@ -30,7 +30,7 @@ void *my_alloc(size_t size) {
         while (current != NULL) {
             if (current->header_t.in_use == 0 && current->header_t.size >= size){
 
-                //first we check if the size of the block that is not in use, is it big enough to accommodate size + header(new header) + extra 2 bytes
+                //first we check if the size of the block that is not in use, is it big enough to accommodate size + header(new header) + extra 16 bytes
                 if (current->header_t.size > size + sizeof(header_wrapper) + MIN_SPLIT_SIZE) {
                     //We first calculate the address of the NEW header
                     //We move forward by, header + requested user size
